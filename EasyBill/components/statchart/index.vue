@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<qiun-data-charts type="area" :chartData="chartExpenseArea.data" :opts="chartExpenseArea.opts" />
-		<qiun-data-charts type="area" :chartData="chartIncomeArea.data" :opts="chartIncomeArea.opts" />、
+		<qiun-data-charts type="area" :chartData="chartIncomeArea.data" :opts="chartIncomeArea.opts" />
 		<qiun-data-charts type="area" :chartData="chartSpendingArea.data" :opts="chartSpendingArea.opts" />
 		<qiun-data-charts type="pie" :chartData="chartAmountValues.data" :opts="chartAmountValues.opts" />
 		<qiun-data-charts type="pie" :chartData="chartCountValues.data" :opts="chartCountValues.opts" />

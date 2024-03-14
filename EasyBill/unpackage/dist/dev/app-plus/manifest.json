@@ -5,12 +5,12 @@
     "iPad"
   ],
   "id": "__UNI__A9D6658",
-  "name": "EasyBill",
+  "name": "易账轻松记",
   "version": {
-    "name": "1.1.0",
-    "code": 110
+    "name": "122",
+    "code": 122
   },
-  "description": "",
+  "description": "用易账，轻松记账",
   "developer": {
     "name": "",
     "email": "",
@@ -132,7 +132,7 @@
       "style": "light",
       "background": "#5EA0FF"
     },
-    "arguments": "{\"path\":\"/pages/index/index\"}",
+    "arguments": "{\"name\":\"development\",\"path\":\"/pages/index/index\",\"query\":\"\"}",
     "allowsInlineMediaPlayback": true,
     "safearea": {
       "background": "#ffffff",
@@ -183,5 +183,6 @@
       "shown": true
     }
   },
+  "locale": "auto",
   "launch_path": "__uniappview.html"
 }

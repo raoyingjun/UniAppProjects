@@ -1,10 +1,10 @@
 <template>
 	<view class="container br-8">
 		<uni-segmented-control :current="current" :values="segments" @clickItem="toggleView" class="mb-16" />
-		<uni-card title="条件过滤" extra="使用条件过滤出更为精细的数据" note="Tips" is-full :border="false" spacing="0">
+		<uni-card title="条件过滤" extra="使用条件过滤出更为精细的数据" is-full :border="false" spacing="0">
 			<uni-forms label-position="top" :model="filter" label-width="150px">
 				<uni-forms-item label="选择日期范围">
-					<uni-datetime-picker v-model="filter.range" type="datetimerange" @maskClick="maskClick" />
+					<uni-datetime-picker v-model="filter.range" type="datetimerange" />
 				</uni-forms-item>
 				<uni-forms-item label="查看数据维度">
 					<uni-segmented-control :current="filter.current" :values="filter.segments"
@@ -46,8 +46,6 @@
 				},
 				segments: ['收支数据', '收支图示'],
 				current: 0,
-				statData: {},
-				statChartData: {},
 				expenses: [],
 				query: getCurrentPages()[getCurrentPages().length - 1].$page.options,
 			}
@@ -95,7 +93,6 @@
 				}
 
 				const full = FullDateMap[this.filter.current]
-
 				return {
 					unit,
 					full
@@ -192,9 +189,6 @@
 					}
 				}
 			},
-		},
-		updated() {
-			this.$forceUpdate()
 		},
 		created() {
 			this.fetchExpenses()

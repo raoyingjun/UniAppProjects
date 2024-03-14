@@ -2956,7 +2956,7 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-.flex, .center, .align-start, .align-col-start, .align-row-start, .align-center, .align-col-center, .align-row-center, .align-end, .align-col-end, .align-row-end, .justify-start, .justify-col-start, .justify-row-start, .justify-center, .justify-col-center, .justify-row-center, .justify-end, .justify-col-end, .justify-row-end, .flex-col, .flex-row {
+.flex, .flex-between, .flex-center, .align-start, .align-col-start, .align-row-start, .align-center, .align-col-center, .align-row-center, .align-end, .align-col-end, .align-row-end, .justify-start, .justify-col-start, .justify-row-start, .justify-center, .justify-col-center, .justify-row-center, .justify-end, .justify-col-end, .justify-row-end, .flex-col, .flex-row {
   display: flex;
   flex-wrap: wrap;
 }
@@ -2969,7 +2969,7 @@ body {
 .justify-end, .justify-col-end, .justify-row-end {
   justify-content: flex-end;
 }
-.justify-center, .center, .justify-col-center, .justify-row-center {
+.justify-center, .flex-center, .justify-col-center, .justify-row-center {
   justify-content: center;
 }
 .justify-start, .justify-col-start, .justify-row-start {
@@ -2978,11 +2978,14 @@ body {
 .align-end, .align-col-end, .align-row-end {
   align-items: flex-end;
 }
-.align-center, .center, .align-col-center, .align-row-center {
+.align-center, .flex-between, .flex-center, .align-col-center, .align-row-center {
   align-items: center;
 }
 .align-start, .align-col-start, .align-row-start {
   align-items: flex-start;
+}
+.flex-between {
+  justify-content: space-around;
 }
 .txt-primary {
   color: #0092FF;

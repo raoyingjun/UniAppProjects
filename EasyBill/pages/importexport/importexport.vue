@@ -19,6 +19,7 @@
 					<button type="primary" size="mini" @click="importData">开始导入</button>
 				</uni-forms-item>
 			</uni-forms>
+			<uni-notice-bar text="仅支持文件后缀为 .json 和 .txt 类型的文件" />
 		</uni-card>
 		<uni-card title="导出本地数据" sub-title="将本地所有数据导出为文件" is-full style="margin-top: 16px;">
 			<uni-forms label-width="150rpx" :model="exportForm">
@@ -101,7 +102,7 @@
 		methods: {
 			chooseImportFile() {
 				const lemonjkFileSelect = uni.requireNativePlugin('lemonjk-FileSelect');
-				lemonjkFileSelect.showPicker({
+				lemonjkFileSelect.showNativePicker({
 					navTitle: "选择文件以导入",
 					navTextColor: '#ffffff',
 					navBarBgColor: '#5EA0FF',
@@ -112,9 +113,10 @@
 					const {
 						filePath,
 						fileRealName,
-						code
+						code,
+						fileExtension
 					} = result.files[0]
-
+					
 					if (code == 1001) {
 						uni.showModal({
 							title: "授权提醒",
@@ -129,7 +131,15 @@
 							}
 						})
 					}
-
+					
+					if (['txt', 'json'].indexOf(fileExtension) === -1) {
+						uni.showToast({
+							title: '文件类型不支持',
+							icon: 'error'
+						})
+						return
+					}
+					
 					this.importForm.filename = fileRealName
 					plus.io.requestFileSystem(plus.io.PUBLIC_DOWNLOADS,
 						fs => {
@@ -190,12 +200,12 @@
 						if (this.importForm.type === 'cover') {
 							uni.clearStorageSync()
 						}
-						
+
 						for (const bill of data.bills) {
 							const {
 								id
 							} = bill
-						
+
 							const bills = uni.getStorageSync('bills') || []
 							const foundSameIndex = bills.findIndex(v => v.id === id)
 							// 存在相同的数据
@@ -279,20 +289,20 @@
 										`bill-${id}-tag-${_id}`,
 										data[`bill-${id}-tag-${_id}`])
 								)
-						
+
 								uni.setStorageSync('bills', bills)
 							}
 						}
 						uni.showToast({
 							title: '导入成功'
 						})
-					} catch(e) {
+					} catch (e) {
 						uni.showToast({
-							title: '导入数据时出错',
+							title: '无法解析数据',
 							icon: 'error'
 						})
 					}
-					
+
 				}
 			},
 			copy() {
@@ -318,7 +328,7 @@
 						json[key] = uni.getStorageSync(key)
 					}
 				}
-				
+
 				if (isEmpty(json)) {
 					uni.showToast({
 						title: '无数据可导出',
@@ -327,7 +337,7 @@
 					})
 					return
 				}
-				
+
 				this.exportForm.json = json
 
 				const {
