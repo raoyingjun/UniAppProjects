@@ -1,0 +1,47 @@
+@for $index from 0 through 8 {
+	// gap size
+	$size: $index * 4;
+	// margin
+	.mt-#{$size} {margin-top: #{$size}px};
+	.mr-#{$size} {margin-right: #{$size}px};
+	.mb-#{$size} {margin-bottom: #{$size}px};
+	.ml-#{$size} {margin-left: #{$size}px};
+	.mx-#{$size} {margin: {left: #{$size}px; right: #{$size}px}};
+	.my-#{$size} {margin: {top: #{$size}px; bottom: #{$size}px}};
+	.m-#{$size} {margin: #{$size}px};
+	// padding
+	.pt-#{$size} {padding-top: #{$size}px};
+	.pr-#{$size} {padding-right: #{$size}px};
+	.pb-#{$size} {padding-bottom: #{$size}px};
+	.pl-#{$size} {padding-left: #{$size}px};
+	.px-#{$size} {padding: {left: #{$size}px; right: #{$size}px}};
+	.py-#{$size} {padding: {top: #{$size}px; bottom: #{$size}px}};
+	.p-#{$size} {padding: #{$size}px};
+	// border radius
+	.brt-#{$size} {border-top-left-radius:#{$size}px; border-top-right-radius:#{$size}px};
+	.brr-#{$size} {border-top-right-radius: #{$size}px; border-bottom-right-radius: #{$size}px};
+	.brb-#{$size} {border-bottom-left-radius:#{$size}px; border-bottom-right-radius: #{$size}px};
+	.brl-#{$size} {border-top-left-radius: #{$size}px; border-bottom-left-radius: #{$size}px};
+	.br-#{$size} {border-radius: #{$size}px};
+
+}
+
+.ml-auto {
+	margin: {
+		left: auto;
+		right: 0;
+	}
+}
+.mr-auto {
+	margin: {
+		left: auto;
+		right: 0;
+	}
+}
+.m-auto {
+	margin: {
+		left: auto;
+		right: auto;
+	}
+}
+

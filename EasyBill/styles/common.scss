@@ -1,0 +1,17 @@
+.txt {
+	&-primary {
+		color: $color-primary;
+	}
+}
+
+.container {
+	background-color: #fff;
+	@extend .p-16;
+	box-shadow: $bg-shadow;
+}
+.txt-center {
+	text-align: center;
+}
+.hidden {
+	visibility: hidden;
+}
