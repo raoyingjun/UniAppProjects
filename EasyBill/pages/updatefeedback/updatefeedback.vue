@@ -2,10 +2,10 @@
 	<uni-section title="软件更新与反馈建议" type="line" sub-title="查询软件版本信息以及发送反馈和建议" class="pb-8 br-8">
 		<uni-card title="版本与软件更新">
 			<uni-row>
-				当前版本：<uni-tag text="1.2.0" type="primary" inverted />
+				当前版本：<uni-tag text="1.2.1" type="primary" inverted />
 			</uni-row>
-			<uni-row class="mt-8">
-				查询新版本：<uni-link href="https://www.baidu.com" text="https://www.baidu.com" color="#007BFF" />
+			<uni-row class="mt-8" style="word-break: break-all;">
+				查询新版本：<uni-link href="https://gitee.com/raoyingjun/EasyBill/blob/master/EasyBill/readme.md" text="https://gitee.com/raoyingjun/EasyBill/blob/master/EasyBill/readme.md" color="#007BFF" />
 			</uni-row>
 		</uni-card>
 		<uni-card title="反馈与建议">

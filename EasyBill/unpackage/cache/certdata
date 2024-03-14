@@ -1,3 +1,3 @@
-andrCertfile=D:/HBuilderX/plugins/app-safe-pack/Test.keystore
-andrCertAlias=android
-andrCertPass=ep/Tdjka4Y7WYqDB6/S7dw==
+andrCertfile=C:/Users/Royin/Desktop/frond-end/UniAppProjects/EasyBill/cert/easybill.release.keystore
+andrCertAlias=easybill-cert
+andrCertPass=9zEj2+t4nN+a4mVtdy3eYA==

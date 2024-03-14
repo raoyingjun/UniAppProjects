@@ -14,8 +14,6 @@
 				</uni-list>
 			</uni-card>
 		</uni-section>
-		<uni-notice-bar single color="#2979FF" background-color="#EAF2FF" text="反馈与建议 | Email: royinrao@qq.com"
-			class="mt-16 txt-center" />
 	</view>
 </template>
 
