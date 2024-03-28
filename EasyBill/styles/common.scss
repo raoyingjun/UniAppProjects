@@ -2,16 +2,29 @@
 	&-primary {
 		color: $color-primary;
 	}
+	&-tip {
+		font-size: 26rpx;
+		color: #999999;
+	}
 }
 
 .container {
 	background-color: #fff;
 	@extend .p-16;
 	box-shadow: $bg-shadow;
+	box-sizing: border-box;
 }
 .txt-center {
 	text-align: center;
 }
 .hidden {
 	visibility: hidden;
+}
+
+.shadow {
+	box-shadow: 4px 4px 12px rgba(0,0,0, .1) !important;
+}
+
+.over-hide {
+	overflow: hidden;
 }

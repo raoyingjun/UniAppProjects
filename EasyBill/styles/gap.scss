@@ -2,28 +2,27 @@
 	// gap size
 	$size: $index * 4;
 	// margin
-	.mt-#{$size} {margin-top: #{$size}px};
-	.mr-#{$size} {margin-right: #{$size}px};
-	.mb-#{$size} {margin-bottom: #{$size}px};
-	.ml-#{$size} {margin-left: #{$size}px};
-	.mx-#{$size} {margin: {left: #{$size}px; right: #{$size}px}};
-	.my-#{$size} {margin: {top: #{$size}px; bottom: #{$size}px}};
-	.m-#{$size} {margin: #{$size}px};
+	.mt-#{$size} {margin-top: #{$size}px !important};
+	.mr-#{$size} {margin-right: #{$size}px !important};
+	.mb-#{$size} {margin-bottom: #{$size}px !important};
+	.ml-#{$size} {margin-left: #{$size}px !important};
+	.mx-#{$size} {margin: {left: #{$size}px !important; right: #{$size}px !important}};
+	.my-#{$size} {margin: {top: #{$size}px !important; bottom: #{$size}px !important}};
+	.m-#{$size} {margin: #{$size}px !important};
 	// padding
-	.pt-#{$size} {padding-top: #{$size}px};
-	.pr-#{$size} {padding-right: #{$size}px};
-	.pb-#{$size} {padding-bottom: #{$size}px};
-	.pl-#{$size} {padding-left: #{$size}px};
-	.px-#{$size} {padding: {left: #{$size}px; right: #{$size}px}};
-	.py-#{$size} {padding: {top: #{$size}px; bottom: #{$size}px}};
-	.p-#{$size} {padding: #{$size}px};
+	.pt-#{$size} {padding-top: #{$size}px !important};
+	.pr-#{$size} {padding-right: #{$size}px !important};
+	.pb-#{$size} {padding-bottom: #{$size}px !important};
+	.pl-#{$size} {padding-left: #{$size}px !important};
+	.px-#{$size} {padding: {left: #{$size}px !important; right: #{$size}px !important}};
+	.py-#{$size} {padding: {top: #{$size}px !important; bottom: #{$size}px !important}};
+	.p-#{$size} {padding: #{$size}px !important};
 	// border radius
-	.brt-#{$size} {border-top-left-radius:#{$size}px; border-top-right-radius:#{$size}px};
-	.brr-#{$size} {border-top-right-radius: #{$size}px; border-bottom-right-radius: #{$size}px};
-	.brb-#{$size} {border-bottom-left-radius:#{$size}px; border-bottom-right-radius: #{$size}px};
-	.brl-#{$size} {border-top-left-radius: #{$size}px; border-bottom-left-radius: #{$size}px};
-	.br-#{$size} {border-radius: #{$size}px};
-
+	.brt-#{$size} {border-top-left-radius:#{$size}px !important; border-top-right-radius:#{$size}px !important};
+	.brr-#{$size} {border-top-right-radius: #{$size}px !important; border-bottom-right-radius: #{$size}px !important};
+	.brb-#{$size} {border-bottom-left-radius:#{$size}px !important; border-bottom-right-radius: #{$size}px !important};
+	.brl-#{$size} {border-top-left-radius: #{$size}px !important; border-bottom-left-radius: #{$size}px !important};
+	.br-#{$size} {border-radius: #{$size}px !important};
 }
 
 .ml-auto {

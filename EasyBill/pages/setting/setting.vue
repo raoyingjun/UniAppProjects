@@ -1,8 +1,8 @@
 <template>
 	<view>
 		<Banner />
-		<uni-section title="设置与选项" sub-title="管理个人数据及偏好设置" type="line" class="mt-16">
-			<uni-card is-full :border="false" :is-shadow="false" padding="0" margin="0">
+		<uni-section title="设置与选项" sub-title="管理个人数据及偏好设置" type="line" class="mt-16 over-hide shadow br-8">
+			<uni-card is-full :border="false" :is-shadow="false" padding="0">
 				<uni-list>
 					<uni-list-item title="数据导入与导出" note="将本地数据导出或从外导入数据到本地" showArrow clickable
 						to="/pages/importexport/importexport" />

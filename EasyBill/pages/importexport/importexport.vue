@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-card is-full title="导入数据到本地" sub-title="导入外部数据并存储到本地">
+		<uni-card is-full title="导入数据到本地" sub-title="导入外部数据并存储到本地" :border="false" class="br-8 shadow">
 			<uni-forms label-width="150rpx" :model="importForm">
 				<uni-forms-item label="合并方式">
 					<uni-data-checkbox v-model="importForm.type" :localdata="importType" />
@@ -21,7 +21,7 @@
 			</uni-forms>
 			<uni-notice-bar text="仅支持文件后缀为 .json 和 .txt 类型的文件" />
 		</uni-card>
-		<uni-card title="导出本地数据" sub-title="将本地所有数据导出为文件" is-full style="margin-top: 16px;">
+		<uni-card title="导出本地数据" sub-title="将本地所有数据导出为文件" is-full style="margin-top: 16px;" :border="false" class="br-8 shadow">
 			<uni-forms label-width="150rpx" :model="exportForm">
 				<uni-forms-item label="导出格式">
 					<uni-data-checkbox v-model="exportForm.type" :localdata="exportType" />

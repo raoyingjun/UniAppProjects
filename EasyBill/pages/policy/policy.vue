@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-card title="使用协议" is-full :border="false" :is-shadow="false">
+		<uni-card title="使用协议" is-full :border="false" class="br-8 shadow mb-16">
 			<text>
 				本软件程序开发与著作人为 Royin,
 				系个人开发者,
@@ -14,7 +14,7 @@
 				本人不承担任何方面法律风险。
 			</text>
 		</uni-card>
-		<uni-card title="用户隐私" is-full :border="false" :is-shadow="false">
+		<uni-card title="用户隐私" is-full :border="false" class="br-8 shadow mb-16">
 			<text>
 				本软件不存储用户任何信息。
 				本软件仅包括为了实现功能所需要的必要业务数据，
@@ -22,7 +22,7 @@
 				本软件不泄露和使用您的任何隐私数据。
 			</text>
 		</uni-card>
-		<uni-card title="个人数据" is-full :border="false" :is-shadow="false">
+		<uni-card title="个人数据" is-full :border="false" class="br-8 shadow mb-16">
 			<text>
 				您的个人数据均存储在本地，不存储到云端。
 				您更换设备、更换渠道、手机刷机等情况时，

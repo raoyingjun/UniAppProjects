@@ -1,5 +1,5 @@
 <template>
-	<uni-card is-full :border="false" :is-shadow="false">
+	<uni-card is-full :border="false" :is-shadow="false" class="br-8 shadow">
 		<view class="flex-between">
 			<view class="align-col-center justify-center" style="height: 250rpx; width: 50%" v-for="item in data">
 				<text class="txt-primary amount mb-4">{{item.value}}</text>

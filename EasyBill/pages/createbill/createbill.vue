@@ -1,5 +1,5 @@
 <template>
-	<uni-card is-full :border="false" padding="0" spacing="0">
+	<uni-card is-full :border="false" padding="0" spacing="0" class="br-8 shadow">
 		<uni-forms :rules="rules" ref="form" :model="form" label-position="top" class="container">
 			<uni-forms-item label="账本名称" name="title" required>
 				<uni-easyinput v-model="form.title" placeholder="为账本起一个名吧" />
@@ -7,8 +7,7 @@
 			<uni-forms-item label="备注">
 				<uni-easyinput v-model="form.description" placeholder="是否需要在该账本写些备注..." type="textarea" />
 			</uni-forms-item>
-			<button type="primary" size="middle" @tap="submit"
-				class="my-20">{{query.id ? '更新账本': '创建账本'}}</button>
+			<button type="primary" size="middle" @tap="submit" class="my-20">{{query.id ? '更新账本': '创建账本'}}</button>
 		</uni-forms>
 	</uni-card>
 </template>
@@ -20,6 +19,9 @@
 	import {
 		v4 as uuidv4
 	} from 'uuid';
+	import {
+		qs
+	} from '/utils/qs.js'
 
 	const defaultTags = () => [{
 			text: '日常用品',
@@ -59,7 +61,7 @@
 					datetime: '',
 					lastModifiedTime: ''
 				},
-				query: getCurrentPages()[getCurrentPages().length-1].$page.options,
+				query: getCurrentPages()[getCurrentPages().length - 1].$page.options,
 				rules: {
 					title: {
 						rules: [{
@@ -92,7 +94,9 @@
 					mask: true,
 				})
 				setTimeout(() => {
-					uni.navigateBack();
+					uni.redirectTo({
+						url: `/pages/detail/detail?${qs(this.form)}`
+					})
 				}, 1500)
 			},
 			updateBill(billId) {
@@ -101,7 +105,7 @@
 				const bill = bills.find(({
 					id
 				}) => id === this.query.id)
-				
+
 				this.form.lastModifiedTime = new Date()
 				assign(bill, this.form)
 				uni.setStorageSync('bills', bills)

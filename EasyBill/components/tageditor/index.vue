@@ -1,14 +1,14 @@
 <template>
 	<view class="flex">
 		<template v-for="(tag, index) in tags">
-			<uni-tag v-if="editable ? true : tag.checked" class="mr-4 my-4" :text="`${tag.text} ${isDelete ? '×' : ''}`"
+			<uni-tag v-if="editable ? true : tag.checked" class="mr-8 my-4" :text="`${tag.text} ${isDelete ? '×' : ''}`"
 				@click="updateTag(tag.id)" :type="isDelete? 'error' : tag.checked ? 'primary' : 'default'"
 				:inverted="!tag.checked" size="small" />
 		</template>
 		<template v-if="editable">
-			<uni-tag :star="false" text="+ 标签" @click="createTagDialog.open()" class="mr-4 my-4" type="primary"
+			<uni-tag :star="false" text="+ 标签" @click="createTagDialog.open()" class="mr-8 my-4" type="primary"
 				inverted="" size="small" />
-			<uni-tag :star="false" :text="isDelete ? '× 取消删除' : '× 删除标签'" @click="deletable" class="mr-4 my-4"
+			<uni-tag :star="false" :text="isDelete ? '× 取消删除' : '× 删除标签'" @click="deletable" class="mr-8 my-4"
 				type="error" inverted="" size="small" />
 			<uni-popup ref="createTagDialog" type="dialog">
 				<uni-popup-dialog mode="input" title="创建新标签" placeholder="输入标签名称" @confirm="createTag" />

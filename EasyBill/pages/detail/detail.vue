@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-section title="收支简报" type="line" sub-title="对收入和支出进行统计">
+		<uni-section title="收支简报" type="line" sub-title="对收入和支出进行统计" class="br-8 over-hide shadow">
 			<uni-card is-full :is-shadow="false">
 				<uni-row class="flex">
 					<uni-title type="h1" :title="`总收支：${stat.expense}`" />
@@ -12,7 +12,7 @@
 			</uni-card>
 		</uni-section>
 
-		<uni-list class="my-16">
+		<uni-list class="my-16 br-8 over-hide shadow">
 			<uni-list-item title="收支报表" showArrow clickable :extraIcon="{color: '#000000',size: '24',type: 'color'}"
 				showExtraIcon :to="`/pages/expensegui/expensegui?${qs(query)}`" />
 			<uni-list-item title="账本详情及设置" showArrow clickable :extraIcon="{color: '#000000',size: '24',type: 'gear'}"
@@ -20,12 +20,16 @@
 		</uni-list>
 
 		<uni-notice-bar text="长摁收支记录可进行删除操作" showClose />
-		<uni-section title="收支记录" subTitle="收入及支出收支的详细信息" type="line" class="mt-16">
-			<uni-list class="my-16">
-				<uni-list-item v-for="expense in expenses" :title="expense.name" :note="noteFormat(expense)" clickable
-					showArrow @click="openDialog(expense.id)" direction="column" @longpress="delExpense(expense.id)">
+		<uni-section title="收支记录" subTitle="收入及支出收支的详细信息" type="line" class="mt-16 br-8 shadow over-hide">
+			<uni-list>
+				<uni-list-item v-for="expense in expenses" :title="expense.name" :note="noteFormat(expense)" clickable showArrow @click="openDialog(expense.id)" direction="column" @longpress="delExpense(expense.id)" class="p-4">
 					<template v-slot:footer>
-						<TagEditor v-model="expense.tags" />
+						<TagEditor v-model="expense.tags" class="mt-4"/>
+					</template>
+				</uni-list-item>
+				<uni-list-item v-if="!expenses.length">
+					<template #body>
+						<Empty text="无任何流水记录, 先去记录一下流水吧!"/>
 					</template>
 				</uni-list-item>
 			</uni-list>
@@ -34,7 +38,8 @@
 			@fabClick="goto(`/pages/createexpense/createexpense?${qs(query)}`)" />
 		<!-- 普通弹窗 -->
 		<uni-popup ref="popup" type="bottom">
-			<uni-card is-full title="修改收支记录" extra="轻触灰色背景区域关闭" @click="close" style="height: 80vh; overflow: auto;">
+			<uni-card is-full title="修改收支记录" extra="轻触灰色背景区域关闭" @click="close" style="height: 80vh; overflow: auto;"
+				class="br-8">
 				<CreateExpense :expenseId="expenseId" @updated="updated" />
 			</uni-card>
 		</uni-popup>
@@ -56,7 +61,7 @@
 	import {
 		indexOf
 	} from 'lodash'
-
+	import Empty from '@/components/empty/index.vue'
 	const TypeMap = {
 		income: '收入',
 		spending: '支出'
@@ -65,7 +70,8 @@
 	export default {
 		components: {
 			CreateExpense,
-			TagEditor
+			TagEditor,
+			Empty
 		},
 		data() {
 			return {
@@ -154,4 +160,8 @@
 </script>
 
 <style scoped lang="scss">
+:deep(.uni-list-item__content-title) {
+	margin-bottom: 8px;
+	font-size: 32rpx;
+}
 </style>

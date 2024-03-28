@@ -1,5 +1,5 @@
 <template>
-	<view :class="expenseId ? '' : 'container br-8'">
+	<view :class="expenseId ? '' : 'br-8 over-hide container'">
 		<ExpenseForm :form="form" @create="createExpense" />
 	</view>
 </template>

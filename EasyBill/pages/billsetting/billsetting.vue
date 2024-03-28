@@ -1,6 +1,6 @@
 <template>
 	<uni-card title="账本信息" is-full :border="false" :is-shadow="false" padding="0" spacing="5px" extra="修改账本信息 >"
-		@click="toEdit">
+		@click="toEdit" class="br-8 shadow">
 		<uni-list>
 			<uni-list-item title="账本 ID" :note="field('id')" />
 			<uni-list-item title="账本名称" :note="field('title')" />

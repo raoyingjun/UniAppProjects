@@ -1,14 +1,20 @@
 <template>
-	<view class="container br-8">
-		<uni-segmented-control :current="current" :values="segments" @clickItem="toggleView" class="mb-16" />
-		<uni-card title="条件过滤" extra="使用条件过滤出更为精细的数据" is-full :border="false" spacing="0">
+	<view>
+		<uni-card is-full padding="0" spacing="0" class="mb-16 br-8 shadow over-hide" :border="false">
+			<uni-segmented-control :current="current" :values="segments" @clickItem="toggleView" />
+		</uni-card>
+		<uni-card title="条件过滤" extra="使用条件过滤出更为精细的数据" is-full :border="false" spacing="0" class="br-8 shadow mb-16">
 			<uni-forms label-position="top" :model="filter" label-width="150px">
-				<uni-forms-item label="选择日期范围">
+				<uni-forms-item label="筛选指定日期范围">
 					<uni-datetime-picker v-model="filter.range" type="datetimerange" />
 				</uni-forms-item>
-				<uni-forms-item label="查看数据维度">
+				<uni-forms-item label="以指定视图查看">
 					<uni-segmented-control :current="filter.current" :values="filter.segments"
 						@clickItem="updateDimension" />
+				</uni-forms-item>
+				<uni-forms-item label="选择指定标签下的流水">
+					<uni-data-checkbox mode="tag" v-model="filter.tagId" :localdata="tags"
+						:map="{text: 'text', value: 'id'}" :wrap="false" />
 				</uni-forms-item>
 			</uni-forms>
 		</uni-card>
@@ -43,8 +49,10 @@
 					segments: ['年度', '月份', '日期'],
 					current: 2,
 					range: ['', ''],
+					tagId: ''
 				},
 				segments: ['收支数据', '收支图示'],
+				tags: [],
 				current: 0,
 				expenses: [],
 				query: getCurrentPages()[getCurrentPages().length - 1].$page.options,
@@ -52,8 +60,7 @@
 		},
 		methods: {
 			updateDimension(e) {
-				const cur = e.currentIndex
-				this.filter.current = cur
+				this.filter.current = e.currentIndex
 			},
 			toggleView(e) {
 				this.current = e.currentIndex
@@ -73,10 +80,23 @@
 					minDate,
 					maxDate
 				}
-			}
+			},
+			fetchTags() {
+				this.tags = (uni.getStorageSync(`bill-${this.query.id}-tag-keys`) || [])
+					.map(id => uni.getStorageSync(`bill-${this.query.id}-tag-${id}`))
 
+				this.tags.unshift({
+					text: '全部标签',
+					id: ''
+				})
+			}
 		},
 		computed: {
+			segmentTags() {
+				return this.tags.map(({
+					text
+				}) => text)
+			},
 			dimension() {
 				const DateMap = {
 					0: 'year',
@@ -100,9 +120,12 @@
 			},
 			filterExpenses() {
 				return this.expenses.filter(({
-						datetime
-					}) => new Date(this.filter.range[0]) <= new Date(datetime) &&
-					new Date(this.filter.range[1]) >= new Date(datetime))
+						datetime,
+						tags
+					}) =>
+					(new Date(this.filter.range[0]) <= new Date(datetime) &&
+						new Date(this.filter.range[1]) >= new Date(datetime)) &&
+					(this.filter.tagId ? tags.some(id => id === this.filter.tagId) : true))
 			},
 			stat() {
 				// 收支数据
@@ -191,6 +214,7 @@
 			},
 		},
 		created() {
+			this.fetchTags()
 			this.fetchExpenses()
 
 			const {
@@ -202,6 +226,25 @@
 	}
 </script>
 
-<style>
+<style scoped lang="scss">
+	:deep(.checklist-box) {
+		background: white !important;
+		flex-shrink: 0;
 
+		&.is-checked {
+			background: #2979ff !important;
+		}
+		.checklist-content {
+			justify-content: center;
+		}
+	}	
+
+	:deep(.checklist-group) {
+		flex-wrap: nowrap !important;
+		overflow: auto;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
 </style>
