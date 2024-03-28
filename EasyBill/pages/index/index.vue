@@ -13,7 +13,7 @@
 		<view class="card br-8 mb-12 shadow flex-between align-center" v-for="bill in bills"
 			@click="goto(`/pages/detail/detail?${qs(bill)}`)">
 			<view>
-				<uni-title :title="bill.title" type="h3" />
+				<view class="mb-20">{{bill.title}}</view>
 				<view class="txt-tip">创建于 {{dateFormat(bill.datetime)}}</view>
 			</view>
 			<uni-icons type="right" size="18"/>
@@ -60,7 +60,7 @@
 <style lang="scss" scoped>
 	.card {
 		background: white;
-		padding: 20px 0 28px;
+		padding: 28px 0;
 		transition: background .2s;
 		&:active {
 			background: #f8f8f8;

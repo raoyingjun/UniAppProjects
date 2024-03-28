@@ -1,7 +1,7 @@
 <template>
 	<uni-card title="版本与软件更新" is-full class="shadow br-8 mb-16" :border="false">
 		<uni-row>
-			当前版本：<uni-tag text="2.0.0" type="primary" inverted />
+			当前版本：<uni-tag text="2.0.1" type="primary" inverted />
 		</uni-row>
 		<uni-row class="mt-8" style="word-break: break-all;">
 			查询新版本：<uni-link href="https://gitee.com/raoyingjun/EasyBill/blob/master/EasyBill/readme.md"

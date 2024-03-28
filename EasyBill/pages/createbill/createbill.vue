@@ -94,7 +94,7 @@
 					mask: true,
 				})
 				setTimeout(() => {
-					uni.redirectTo({
+					uni.navigateTo({
 						url: `/pages/detail/detail?${qs(this.form)}`
 					})
 				}, 1500)

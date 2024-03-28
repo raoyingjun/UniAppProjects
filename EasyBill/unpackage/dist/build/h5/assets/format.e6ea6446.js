@@ -1,0 +1,1 @@
+import{l as t}from"./lodash.78ef8cd2.js";const e=(e,n="/",s=":",o=" ")=>{const i=(e=new Date(e)).getFullYear(),r=e.getMonth()+1,g=e.getDate(),a=e.getHours(),l=e.getMinutes(),u=e.getSeconds();let S="";return t.isString(n)&&(S+=[i,r,g].join(n)),t.isString(s)&&(S+=t.isString(o)?o:"",S+=[a,l,u].map((t=>t<10?`0${t}`:t)).join(s)),S};export{e as d};

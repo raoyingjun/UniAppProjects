@@ -27,7 +27,7 @@
 					<uni-data-checkbox v-model="exportForm.type" :localdata="exportType" />
 				</uni-forms-item>
 				<uni-forms-item label="文件命名">
-					<uni-easyinput errorMessage v-model="exportForm.downloadFilename" focus placeholder="请输入内容" />
+					<uni-easyinput errorMessage v-model="exportForm.downloadFilename" placeholder="请输入内容" />
 				</uni-forms-item>
 				<uni-forms-item label="">
 					<button type="primary" size="mini" @click="exportData">开始导出</button>
