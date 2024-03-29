@@ -1,12 +1,13 @@
 <template>
 	<view class="container br-8">
-		<uni-segmented-control :current="current" :values="segments" @clickItem="toggleView" style-type="text" class="mb-24"/>
-		<template v-if="current === 0">
+		<uni-segmented-control :current="modelValue" :values="segments" @clickItem="toggleView" style-type="text"
+			class="mb-24" />
+		<template v-if="modelValue === 0">
 			<qiun-data-charts type="area" :chartData="chartExpenseArea.data" :opts="chartExpenseArea.opts" />
 			<qiun-data-charts type="area" :chartData="chartIncomeArea.data" :opts="chartIncomeArea.opts" />
 			<qiun-data-charts type="area" :chartData="chartSpendingArea.data" :opts="chartSpendingArea.opts" />
 		</template>
-		<template v-else-if="current === 1">
+		<template v-else-if="modelValue === 1">
 			<qiun-data-charts type="pie" :chartData="chartAmountValues.data" :opts="chartAmountValues.opts" />
 			<qiun-data-charts type="pie" :chartData="chartCountValues.data" :opts="chartCountValues.opts" />
 		</template>
@@ -19,14 +20,19 @@
 		reactive,
 		ref
 	} from 'vue'
+
 	const segments = ref(['折线图', '饼图'])
-	const current = ref(0)
+
 	const props = defineProps({
-		data: Object
+		data: Object,
+		modelValue: Number,
 	})
+	const emit = defineEmits(['update:modelValue'])
+
 	const toggleView = e => {
-		current.value = e.currentIndex
+		emit('update:modelValue', e.currentIndex)
 	}
+
 	const chartGenerator = ({
 		data,
 		categories,

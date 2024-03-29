@@ -1,14 +1,12 @@
 <template>
 	<view>
-		<uni-card is-full padding="0" spacing="0" class="mb-16 br-8 shadow over-hide" :border="false">
-			<uni-segmented-control :current="current" :values="segments" @clickItem="toggleView" />
-		</uni-card>
+		<uni-segmented-control :current="current" :values="segments" @clickItem="toggleView" class="container mb-16 over-hide br-8" style="padding: 0 !important;"/>
 		<uni-card title="条件过滤" extra="使用条件过滤出更为精细的数据" is-full :border="false" spacing="0" class="br-8 shadow mb-16">
 			<uni-forms label-position="top" :model="filter" label-width="150px">
 				<uni-forms-item label="筛选指定日期范围">
 					<uni-datetime-picker v-model="filter.range" type="datetimerange" />
 				</uni-forms-item>
-				<uni-forms-item label="以指定视图查看">
+				<uni-forms-item label="以指定视图查看" v-if="filter.chartType === 0">
 					<uni-segmented-control :current="filter.current" :values="filter.segments"
 						@clickItem="updateDimension" />
 				</uni-forms-item>
@@ -19,7 +17,7 @@
 			</uni-forms>
 		</uni-card>
 		<StatData v-if="current === 0" :data="stat.dataList" />
-		<StatChart v-if="current === 1" :data="stat.chartList" />
+		<StatChart v-if="current === 1" :data="stat.chartList" v-model="filter.chartType"/>
 	</view>
 </template>
 
@@ -49,7 +47,8 @@
 					segments: ['年度', '月份', '日期'],
 					current: 2,
 					range: ['', ''],
-					tagId: ''
+					tagId: '',
+					chartType: 0 // 0 -> 折线图，1 -> 饼图
 				},
 				segments: ['收支数据', '收支图示'],
 				tags: [],
@@ -72,10 +71,12 @@
 			getMinAndMax() {
 				const minDate = this.expenses.length ? Math.min(...this.expenses.map(({
 					datetime
-				}) => new Date(datetime).valueOf())) : new Date();
+				}) => new Date(datetime).valueOf())) : '';
+				
 				const maxDate = this.expenses.length ? Math.max(...this.expenses.map(({
 					datetime
-				}) => new Date(datetime).valueOf())) : new Date();
+				}) => new Date(datetime).valueOf())) : '';
+				
 				return {
 					minDate,
 					maxDate
@@ -151,8 +152,7 @@
 					name: '支出笔数',
 					value: count.spending
 				}]
-
-
+				
 				// 收支图示，折线图
 				const categories = []
 				const incomeValues = []
@@ -170,7 +170,7 @@
 					if (this.dimension.unit === 'year') {
 						currentDateString = date.getFullYear()
 					}
-
+					
 					const currentDateExpenses = this.expenses.filter(({
 						datetime
 					}) => isSameDate(datetime, date, this.dimension.full))
@@ -234,10 +234,11 @@
 		&.is-checked {
 			background: #2979ff !important;
 		}
+
 		.checklist-content {
 			justify-content: center;
 		}
-	}	
+	}
 
 	:deep(.checklist-group) {
 		flex-wrap: nowrap !important;
