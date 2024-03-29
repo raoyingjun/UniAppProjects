@@ -60,7 +60,7 @@
 <style lang="scss" scoped>
 	.card {
 		background: white;
-		padding: 28px 0;
+		padding: 28px 36px;
 		transition: background .2s;
 		&:active {
 			background: #f8f8f8;

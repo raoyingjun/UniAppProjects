@@ -97,6 +97,6 @@
 
 .flex-between {
 	@extend .flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	@extend .align-center;
 }

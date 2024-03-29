@@ -22,14 +22,16 @@
 		<uni-notice-bar text="长摁收支记录可进行删除操作" showClose />
 		<uni-section title="收支记录" subTitle="收入及支出收支的详细信息" type="line" class="mt-16 br-8 shadow over-hide">
 			<uni-list>
-				<uni-list-item v-for="expense in expenses" :title="expense.name" :note="noteFormat(expense)" clickable showArrow @click="openDialog(expense.id)" direction="column" @longpress="delExpense(expense.id)" class="p-4">
+				<uni-list-item v-for="expense in expenses" :title="expense.name" :note="noteFormat(expense)" clickable
+					showArrow @click="openDialog(expense.id)" direction="column" @longpress="delExpense(expense.id)"
+					class="p-4">
 					<template v-slot:footer>
-						<TagEditor v-model="expense.tags" class="mt-4"/>
+						<TagEditor v-model="expense.tags" class="mt-4" />
 					</template>
 				</uni-list-item>
 				<uni-list-item v-if="!expenses.length">
 					<template #body>
-						<Empty text="无任何流水记录, 先去记录一下流水吧!"/>
+						<Empty text="无任何流水记录, 先去记录一下流水吧!" />
 					</template>
 				</uni-list-item>
 			</uni-list>
@@ -160,8 +162,12 @@
 </script>
 
 <style scoped lang="scss">
-:deep(.uni-list-item__content-title) {
-	margin-bottom: 8px;
-	font-size: 32rpx;
-}
+	:deep(.uni-list-item__content-title) {
+		font-size: 32rpx;
+		
+	}
+
+	:deep(.uni-list-item__content-note) {
+		margin-top: 8px;
+	}
 </style>
