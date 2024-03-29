@@ -74,14 +74,14 @@ export const foreachDate = (from, to, type, callback) => {
 		let unitDiff = end - start
 
 		// 判断一下是不是闰年。是闰年的话单位时间差需要加 1 天
-		const isLeapYear_current = isLeapYear(current)
-		const isLeapYear_to = isLeapYear(to)
-		if (isLeapYear_current) {
-			unitDiff -= 24 * 60 * 60 * 1000
-		}
-		if (isLeapYear_to) {
-			unitDiff += 24 * 60 * 60 * 1000
-		}
+		// const isLeapYear_current = isLeapYear(current)
+		// const isLeapYear_to = isLeapYear(to)
+		// if (isLeapYear_current) {
+		// 	unitDiff -= 24 * 60 * 60 * 1000
+		// }
+		// if (isLeapYear_to) {
+		// 	unitDiff += 24 * 60 * 60 * 1000
+		// }
 		/**
 		 * 如果与终点的距离小于 1 个维度的单位差
 		 * 比如：
