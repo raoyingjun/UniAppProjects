@@ -123,6 +123,9 @@
     "locale" : "auto",
     "h5" : {
         "title" : "",
-        "domain" : ""
+        "domain" : "",
+		"router": {
+			"base": "/easybill/"
+		}
     }
 }
